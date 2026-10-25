@@ -1,4 +1,4 @@
-
+package assignment1_2;
 import java.util.Scanner;
 
 public class ObsoleteMeasures {
