@@ -1,8 +1,11 @@
+
 package assignment1_1;
+
 import java.util.Scanner;
 
 public class SumOfThreeNumbers {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Give the first number:");
@@ -16,13 +19,14 @@ public class SumOfThreeNumbers {
 
         int sum = first + second + third;
         int product = first * second * third;
+
+        // We use 3.0 because dividing by 3 gives an integer result
+        // and removes the decimal part.
         double average = sum / 3.0;
 
         System.out.println("The sum of the numbers is " + sum);
         System.out.println("The product of the numbers is " + product);
         System.out.println("The average of the numbers is " + average);
 
-        scanner.close();
     }
 }
-
