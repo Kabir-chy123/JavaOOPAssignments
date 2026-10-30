@@ -8,6 +8,7 @@ public class GroceryListManager {
 
     private ArrayList<String> groceryList = new ArrayList<>();
     private HashMap<String, Double> prices = new HashMap<>();
+    private HashMap<String, String> categories = new HashMap<>();
 
     // Task 1
     public void addItem(String item) {
@@ -17,6 +18,7 @@ public class GroceryListManager {
     public void removeItem(String item) {
         groceryList.remove(item);
         prices.remove(item);
+        categories.remove(item);
     }
 
     public void displayList() {
@@ -49,25 +51,46 @@ public class GroceryListManager {
         return total;
     }
 
+    // Task 3
+    public void addItem(String item, double cost, String category) {
+        groceryList.add(item);
+        prices.put(item, cost);
+        categories.put(item, category);
+    }
+
+    public void displayByCategory(String category) {
+        System.out.println("Category: " + category);
+
+        for (String item : groceryList) {
+            if (category.equals(categories.get(item))) {
+                System.out.println(item);
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         GroceryListManager grocery = new GroceryListManager();
 
-        grocery.addItem("Apples", 2.50);
-        grocery.addItem("Milk", 1.50);
-        grocery.addItem("Bread", 3.00);
+        grocery.addItem("Apples", 2.50, "Fruits");
+        grocery.addItem("Milk", 1.50, "Dairy");
+        grocery.addItem("Bread", 3.00, "Bakery");
+        grocery.addItem("Bananas", 2.00, "Fruits");
 
+        // Task 1
         grocery.displayList();
-
-        System.out.println("Total cost: " + grocery.calculateTotalCost() + " euros");
 
         System.out.println("Is Milk in the list? " + grocery.checkItem("Milk"));
 
-        grocery.removeItem("Milk");
+        // Task 2
+        System.out.println("Total cost: " + grocery.calculateTotalCost() + " euros");
 
-        System.out.println("After removing Milk:");
-        grocery.displayList();
+        // Task 3
+        System.out.println();
+        grocery.displayByCategory("Fruits");
 
-        System.out.println("New total cost: " + grocery.calculateTotalCost() + " euros");
+        System.out.println();
+        grocery.displayByCategory("Dairy");
     }
 }
+
