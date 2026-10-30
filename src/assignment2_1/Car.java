@@ -1,8 +1,6 @@
 package assignment2_1;
 
 
-
-
 public class Car {
 
     private double speed;
@@ -57,7 +55,7 @@ public class Car {
         return gasolineLevel;
     }
 
-    // Cruise control
+    // Task 4: Cruise control
 
     public void setTargetSpeed(double target) {
         targetSpeed = target;
@@ -82,11 +80,11 @@ public class Car {
         cruiseOn = true;
 
         while (speed < targetSpeed) {
-            speed = speed + 1;
+            speed = Math.min(speed + 1, targetSpeed);
         }
 
         while (speed > targetSpeed) {
-            speed = speed - 1;
+            speed = Math.max(speed - 1, targetSpeed);
         }
 
         return true;
@@ -95,5 +93,8 @@ public class Car {
     public void turnCruiseOff() {
         cruiseOn = false;
     }
-}
 
+    public boolean isCruiseOn() {
+        return cruiseOn;
+    }
+}
