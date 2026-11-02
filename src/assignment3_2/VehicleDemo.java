@@ -5,41 +5,39 @@ public class VehicleDemo {
 
     public static void main(String[] args) {
 
-        Vehicle car = new Car();
-        Vehicle motorcycle = new Motorcycle();
-        Vehicle bus = new Bus();
-
-        ElectricCar electricCar = new ElectricCar();
-        ElectricMotorcycle electricMotorcycle = new ElectricMotorcycle();
+        AbstractVehicle[] vehicles = {
+                new Car(),
+                new Motorcycle(),
+                new Bus(),
+                new ElectricCar(),
+                new ElectricMotorcycle()
+        };
 
         System.out.println("Vehicle Demonstration");
 
-        car.start();
-        car.stop();
-        System.out.println(car.getInfo());
+        for (AbstractVehicle vehicle : vehicles) {
 
-        motorcycle.start();
-        motorcycle.stop();
-        System.out.println(motorcycle.getInfo());
+            System.out.println();
 
-        bus.start();
-        bus.stop();
-        System.out.println(bus.getInfo());
+            vehicle.start();
+            vehicle.stop();
 
-        System.out.println("\nElectric Vehicles");
+            System.out.println(vehicle.getInfo());
 
-        electricCar.start();
-        electricCar.charge();
-        electricCar.stop();
-        System.out.println(electricCar.getInfo());
+            if (vehicle instanceof ElectricCar ||
+                    vehicle instanceof ElectricMotorcycle) {
 
-        electricMotorcycle.start();
-        electricMotorcycle.charge();
-        electricMotorcycle.stop();
-        System.out.println(electricMotorcycle.getInfo());
+                System.out.println("Energy consumption: "
+                        + vehicle.calculateFuelEfficiency() + " kWh/km");
 
-        System.out.println("\nCharging normal car:");
-        ((ElectricVehicle) car).charge();
+            } else {
+
+                System.out.println("Fuel consumption: "
+                        + vehicle.calculateFuelEfficiency() + " L/100 km");
+            }
+
+            vehicle.charge();
+        }
     }
 }
 
