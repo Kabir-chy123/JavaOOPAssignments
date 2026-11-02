@@ -23,9 +23,16 @@ public class Main {
         library.addMember(member1);
         library.addMember(member2);
 
-        library.borrowBook(member1, book1);
-        library.borrowBook(member2, book2);
+        library.reserveBook(member1, book1);
+        library.reserveBook(member2, book2);
 
+        library.displayReservedBooks(member1);
+        library.displayReservedBooks(member2);
+
+        library.cancelReservation(member1, book1);
+
+        library.borrowBook(member1, book1);
         library.returnBook(member1, book1);
     }
 }
+
