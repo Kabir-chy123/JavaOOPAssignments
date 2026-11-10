@@ -6,7 +6,7 @@ public class FahrenheitToCelsius {
 
         Scanner reader = new Scanner(System.in);
 
-        System.out.print("Enter temperature in Fahrenheit: ");
+        System.out.print("Enter TemperatureAverage in Fahrenheit: ");
         double fahrenheit = Double.parseDouble(reader.nextLine());
 
         double celsius = (fahrenheit - 32) * 5 / 9;
