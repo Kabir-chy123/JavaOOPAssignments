@@ -4,7 +4,6 @@ package assignment4;
 public class Calculator {
 
     private int value = 0;
-
     public void reset() {
         value = 0;
     }
